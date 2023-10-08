@@ -1,0 +1,50 @@
+module_name: whisper_asr
+train_name: whisper_large_asr
+train_id: second
+whisper_name: large
+monitor: valid_wer_epoch
+data_root: null
+cv_data_root: null
+output_dir: null
+ckpt_name: "checkpoint-{epoch:02d}-{valid_wer_epoch:.2f}"
+use_deepspeed: true
+use_acti_ckpt: true
+chunk_size: 30
+num_nodes: 4
+
+learning_rate: 5.0e-8
+lr_end: 1.0e-8
+lr_pow: 2.0
+weight_decay: 0.1
+adam_epsilon: 1.0e-6
+adam_betas: [0.9, 0.98]
+warmup_steps: 5000
+batch_size: 3
+test_batch_size: 5
+num_worker: 4
+num_train_epochs: 10
+gradient_accumulation_steps: 2
+
+
+language_list:
+- french
+- german
+- spanish
+- italian
+- russian
+- chinese
+- portuguese
+- persian
+- estonian
+- mongolian
+- dutch
+- turkish
+- arabic
+- swedish
+- latvian
+- tamil
+- japanese
+- indonesian
+- slovenian
+- welsh
+- catalan

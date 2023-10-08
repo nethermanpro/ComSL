@@ -1,0 +1,50 @@
+module_name: mbart
+train_name: mbart
+train_id: default
+monitor: val/bleu
+num_nodes: 1
+data_root: null
+cv_data_root: null
+output_dir: null
+ckpt_name: "checkpoint-{epoch:02d}-{val/bleu:.2f}"
+use_deepspeed: false
+learning_rate: 2.0e-05
+weight_decay: 0.0
+adam_epsilon: 1.0e-6
+adam_betas: [0.9, 0.98]
+warmup_steps: 2500
+batch_size: 20
+test_batch_size: 20
+num_worker: 4
+num_train_epochs: 5
+gradient_accumulation_steps: 2
+attention_dropout: 0.1
+dropout: 0.3
+label_smoothing: 0.0
+test_only: true
+
+
+language_list:
+- french
+- german
+- spanish
+- italian
+- russian
+- chinese
+- portuguese
+- persian
+- estonian
+- mongolian
+- dutch
+- turkish
+- arabic
+- swedish
+- latvian
+- tamil
+- japanese
+- indonesian
+- slovenian
+- welsh
+- catalan
+
+

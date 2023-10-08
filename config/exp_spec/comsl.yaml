@@ -1,0 +1,101 @@
+module_name: comst
+train_name: ComST
+train_id: default
+
+use_deepspeed: true
+use_acti_ckpt: false
+num_nodes: 4
+monitor: val_bleu_spch_epoch
+ckpt_name: "checkpoint-{epoch:02d}-{val_bleu_spch_epoch:.2f}"
+data_root: null
+cv_data_root: null
+output_dir: null
+
+warmup_steps: 5000
+batch_size: 1
+test_batch_size: 1
+num_worker: 3
+num_train_epochs: 15
+gradient_accumulation_steps: 1
+chunk_size: 11
+
+
+# whisper model
+whisper_name: medium
+spch_n_layers: 24
+disable_spch_grad_epoch: 5
+
+learning_rate: 2.0e-5
+lr_end: 1.0e-7
+lr_pow: 2.0
+weight_decay: 0.1
+adam_epsilon: 1.0e-6
+dropout: 0.1
+attention_dropout: 0.0
+adam_betas: [0.9, 0.98]
+enc_grad_mult: 2.0
+guide_alpha: 0.8
+text_alpha: 0.2
+
+spch_loss_weight: 0.35
+asr_loss_weight: 0.35
+text_loss_weight: 0.2
+use_cml: true
+cml_loss_weight: 0.1
+use_erm: true
+erm_loss_weight: 0.2
+
+# model path relative to cache_dir
+language_regularization_model_path: null
+language_init_model_path: null
+spch_init_model_path: null
+
+language_list:
+- french
+- german
+- spanish
+- italian
+- russian
+- chinese
+- portuguese
+- persian
+- estonian
+- mongolian
+- dutch
+- turkish
+- arabic
+- swedish
+- latvian
+- tamil
+- japanese
+- indonesian
+- slovenian
+- welsh
+- catalan
+
+extra_language_list:
+- russian
+- chinese
+- portuguese
+- persian
+- estonian
+- mongolian
+- dutch
+- turkish
+- arabic
+- swedish
+- latvian
+- tamil
+- japanese
+- indonesian
+- slovenian
+- welsh
+
+
+
+
+
+
+
+
+
