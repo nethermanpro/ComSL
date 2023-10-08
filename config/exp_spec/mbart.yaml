@@ -21,10 +21,9 @@ gradient_accumulation_steps: 2
 attention_dropout: 0.1
 dropout: 0.3
 label_smoothing: 0.0
-test_only: true
+language_init_model_path: null
 
-
-language_list:
+avail_lang: 
 - french
 - german
 - spanish

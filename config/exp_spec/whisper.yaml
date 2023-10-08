@@ -26,7 +26,8 @@ num_worker: 4
 num_train_epochs: 10
 gradient_accumulation_steps: 2
 
-language_list:
+
+avail_lang: 
 - french
 - german
 - spanish

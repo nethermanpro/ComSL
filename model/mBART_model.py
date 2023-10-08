@@ -1,4 +1,3 @@
-# A simple wrapper for mBART model for convenience of training and inference
 from torch import nn
 from model.model_util import load_mbart_model
 

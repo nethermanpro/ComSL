@@ -17,9 +17,7 @@ output_dir: null
 asr_model_path: whisper_large_asr.pt
 mbart_model_path: mbart_x_en.pt
 
-test_only: true
-
-language_list:
+avail_lang: 
 - french
 - german
 - spanish

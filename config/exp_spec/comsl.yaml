@@ -50,7 +50,7 @@ language_regularization_model_path: null
 language_init_model_path: null
 spch_init_model_path: null
 
-language_list:
+avail_lang: 
 - french
 - german
 - spanish
@@ -73,23 +73,28 @@ language_list:
 - welsh
 - catalan
 
-extra_language_list:
-- russian
-- chinese
-- portuguese
-- persian
-- estonian
-- mongolian
-- dutch
-- turkish
-- arabic
-- swedish
-- latvian
-- tamil
-- japanese
-- indonesian
-- slovenian
-- welsh
+# avail_lang_extra: 
+# - french
+# - german
+# - spanish
+# - italian
+# - russian
+# - chinese
+# - portuguese
+# - persian
+# - estonian
+# - mongolian
+# - dutch
+# - turkish
+# - arabic
+# - swedish
+# - latvian
+# - tamil
+# - japanese
+# - indonesian
+# - slovenian
+# - welsh
+# - catalan
 
 
 

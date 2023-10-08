@@ -205,7 +205,7 @@ class ComSTEncoder(nn.Module):
         ret1 = None
         ret2 = None
         if mel is not None:
-            ret1 = self.spch_encoder(mel, src_lang_ids, )
+            ret1 = self.spch_encoder(mel, src_lang_ids)
 
         if src_tokens is not None:
             ret2 = self.text_encoder(

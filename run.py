@@ -1,14 +1,15 @@
-from data.data_util import load_data_record
-from pathlib import Path
 import logging
+import os
+from pathlib import Path
+
 from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.strategies import DDPStrategy, DeepSpeedStrategy
 
-from modules import get_module
 from config.parse_yaml_args import parse_args_and_yaml
-import os
+from data.data_util import load_data_record
+from modules import get_module
 
 os.environ["TORCH_DISTRIBUTED_DEBUG"] = "INFO"
 
@@ -16,6 +17,7 @@ cfg = parse_args_and_yaml()
 module_name = cfg.module_name
 
 Module = get_module(module_name)
+seed_everything(42)
 
 if __name__ == "__main__":
 

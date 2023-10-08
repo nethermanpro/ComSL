@@ -1,7 +1,6 @@
-from Whisper.model import *
 from torch.nn import LayerNorm
 from transformers import MBartForConditionalGeneration, MBart50TokenizerFast, MBartConfig
-import os.path as osp
+from Whisper.model import *
 
 MBART_PRETRAINED_MODEL = "facebook/mbart-large-50-many-to-many-mmt"
 
@@ -11,8 +10,11 @@ def load_mbart_tokenizer(cfg, extra_special_tokens=None):
         extra_special_tokens = []
     extra_special_tokens = ['cy_GB', 'ca_ES'] + extra_special_tokens
 
-    tokenizer = MBart50TokenizerFast.from_pretrained(MBART_PRETRAINED_MODEL, cache_dir=cfg.cache_dir,
-                                                     additional_special_tokens=extra_special_tokens)
+    tokenizer = MBart50TokenizerFast.from_pretrained(
+        MBART_PRETRAINED_MODEL, 
+        cache_dir=cfg.cache_dir,
+        additional_special_tokens=extra_special_tokens
+        )
     tokenizer.lang_code_to_id["cy_GB"] = tokenizer.convert_tokens_to_ids("cy_GB")
     tokenizer.lang_code_to_id["ca_ES"] = tokenizer.convert_tokens_to_ids("ca_ES")
     return tokenizer
@@ -22,19 +24,25 @@ def load_mbart_model(cfg, extra_special_tokens=None, load_from_local=True, path=
     if extra_special_tokens is None:
         extra_special_tokens = []
 
-    configuration = MBartConfig.from_pretrained(MBART_PRETRAINED_MODEL, cache_dir=cfg.cache_dir)
+    configuration = MBartConfig.from_pretrained(
+        MBART_PRETRAINED_MODEL, 
+        cache_dir=cfg.cache_dir
+        )
     if hasattr(cfg, "attention_dropout"):
         configuration.attention_dropout = cfg.attention_dropout
     if hasattr(cfg, "dropout"):
         configuration.dropout = cfg.dropout
-    mbart_model = MBartForConditionalGeneration.from_pretrained(MBART_PRETRAINED_MODEL, cache_dir=cfg.cache_dir,
-                                                                config=configuration)
+    mbart_model = MBartForConditionalGeneration.from_pretrained(
+        MBART_PRETRAINED_MODEL, 
+        cache_dir=cfg.cache_dir,
+        config=configuration
+        )
     mbart_model.resize_token_embeddings(configuration.vocab_size + 2 + len(extra_special_tokens))
     if path is None:
         path = cfg.language_init_model_path
     if load_from_local and path is not None:
-        mbart_model.load_state_dict(torch.load(osp.join(cfg.cache_dir, path)))
-        print("load mbart model from {}".format(osp.join(cfg.cache_dir, path)))
+        mbart_model.load_state_dict(torch.load(path))
+        print("load mbart model from {}".format(path))
 
     return mbart_model
 
@@ -63,7 +71,9 @@ class Conv1dAdaptor(nn.Module):
         self.post_proj, self.post_proj_ln = None, None
         if proj:
             self.proj = nn.Sequential(
-                nn.Linear(in_dim, in_dim * 4), nn.ReLU(), nn.Linear(in_dim * 4, in_dim)
+                nn.Linear(in_dim, in_dim * 4), 
+                nn.ReLU(), 
+                nn.Linear(in_dim * 4, in_dim)
             )
             self.proj_ln = LayerNorm(in_dim)
             self.post_proj = nn.Sequential(
