@@ -1,4 +1,4 @@
-# Getting Started with ComSL
+# Introduction
 
 This is the official repository of [ComSL: A Composite Speech-Language Model for End-to-End Speech-to-Text Translation](https://arxiv.org/abs/2305.14838), which includes the code for finetuning whisper and mbart, creating pseudo dataset and finetuning the ComSL model.
 
