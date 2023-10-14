@@ -37,7 +37,7 @@ python3 main.py -c comsl.yaml
 ```bibtex
 @misc{le2023comsl,
       title={ComSL: A Composite Speech-Language Model for End-to-End Speech-to-Text Translation}, 
-      author={Chenyang Le and Yao Qian and Long Zhou and Shujie Liu and Michael Zeng and Xuedong Huang},
+      author={Chenyang Le and Yao Qian and Long Zhou and Shujie Liu and Yanmin Qian Michael Zeng and Xuedong Huang},
       year={2023},
       eprint={2305.14838},
       archivePrefix={arXiv},
